@@ -1,1 +1,47 @@
-<html><body><h1>Hello!</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adobe PDF Embed Viewer</title>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    #adobe-dc-view {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="adobe-dc-view"></div>
+
+  <script>
+    document.addEventListener("adobe_dc_view_sdk.ready", function () {
+      var adobeDCView = new AdobeDC.View({
+        clientId: "c7b36dbbdc4e47f5b55a75c830ffcd54",
+        divId: "adobe-dc-view"
+      });
+
+      adobeDCView.previewFile({
+        content: {
+          location: {
+            url: "https://camdavis2003.github.io/pdf-viewer/ACGL_Code-2025_Final.pdf"
+          }
+        },
+        metaData: { fileName: "ACGL_Code-2025_Final.pdf" }
+      }, {
+        embedMode: "FULL_WINDOW",
+        showDownloadPDF: false,
+        showPrintPDF: false,
+        showAnnotationTools: false,
+        showLeftHandPanel: false,
+        defaultViewMode: "FIT_WIDTH"
+      });
+    });
+  </script>
+</body>
+</html>
